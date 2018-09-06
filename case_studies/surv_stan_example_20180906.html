@@ -250,14 +250,17 @@ h(t)dt \doteq \mathbb{P}\left[T\in (t,t+dt) \vert T\geq t\right]
 </div>
 <div id="generated-quantities-block" class="section level2">
 <h2>Generated Quantities Block</h2>
-<p>For the posterior predictive checks we will conduct below, that allow us to scrutinize aspects of our posterior induced family<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> Here we adopt the viewpoint that Bayesian statistics leads to families of models, each model weighted approximately proportional to the corresponding posterior probability of it.</span> of survival models, we need to be able sample survival times, for each individual (or a suitable subset of them), at a set of representative posterior induced model instances. These survival times are stored below in the vector <code>times_censored_sampled</code>. Note that we only generate survival times for individuals for which we actually observed an event.</p>
+<p>For the posterior predictive checks we will conduct below, that allow us to scrutinize aspects of our posterior induced family<label for="tufte-sn-8" class="margin-toggle sidenote-number">8</label><input type="checkbox" id="tufte-sn-8" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">8</span> Here we adopt the viewpoint that Bayesian statistics leads to families of models, each model weighted approximately proportional to the corresponding posterior probability of it.</span> of survival models, we need to be able to sample survival times, for each individual (or a suitable subset of them), at a set of representative posterior induced model instances. These survival times are stored below in the vector <code>times_uncensored_sampled</code>. Note that we only generate survival times for individuals for which we actually observed an event.</p>
 <pre class="rstan"><code>generated quantities {
-    vector[N_uncensored] times_censored_sampled;
+    vector[N_uncensored] times_uncensored_sampled;
     for(i in 1:N_uncensored) {
-        times_censored_sampled[i] = exponential_rng(exp(intercept+X_uncensored[i,]*betas));
+        times_uncensored_sampled[i] = exponential_rng(exp(intercept+X_uncensored[i,]*betas));
     }
 }</code></pre>
-<p>A great improvement in Stan <span class="math inline">\(2.18\)</span> is the support of vectorized <code>_rng</code> statements, i.e. the possibility to draw vectors of random samples, instead of generating them on scalar based within a for-loop. ## Model compilation</p>
+<p>A great improvement in Stan <span class="math inline">\(2.18\)</span> is the support of vectorized <code>_rng</code> statements, i.e. the possibility to draw vectors of random samples, instead of generating them on scalar based within a for-loop.</p>
+</div>
+<div id="model-compilation" class="section level2">
+<h2>Model compilation</h2>
 <pre class="r"><code>library(rstan)
 rstan_options(auto_write = TRUE)
 sm &lt;- stan_model(&quot;./exponential_survival_simple_ppc.stan&quot;)</code></pre>
@@ -377,7 +380,7 @@ mcmc_trace(post, pars=c(&quot;betas[1]&quot;, &quot;intercept&quot;),
 <h1>Posterior predictive checks</h1>
 <p>Posterior predictive checks<label for="tufte-sn-12" class="margin-toggle sidenote-number">12</label><input type="checkbox" id="tufte-sn-12" class="margin-toggle"><span class="sidenote"><span class="sidenote-number">12</span> See the excellent bayesplot vignette <a href="https://cran.r-project.org/web/packages/bayesplot/vignettes/graphical-ppcs.html">Graphical posterior predictive checks using the bayesplot package</a> for an introdution and practical instructions.</span> constitute a family of powerful methods to scrutinize relevant aspects of your model.</p>
 <p>Below we run various posteriod predictive checks constrained to the instances (individuals) that came with non-censored survival times:</p>
-<pre class="r"><code>surv_times_rep &lt;- as.matrix(post[,1,sprintf(&quot;times_censored_sampled[%d]&quot;, 1:stan_data$N_uncensored)]) 
+<pre class="r"><code>surv_times_rep &lt;- as.matrix(post[,1,sprintf(&quot;times_uncensored_sampled[%d]&quot;, 1:stan_data$N_uncensored)]) 
 surv_times_train &lt;- times[!msk_censored]
 ###########################################################################################
 color_scheme_set(&quot;brightblue&quot;)

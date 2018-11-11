@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Stan User Group Berlin</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Stan User Group Berlin</h1>
+        <p>Visit our <a href="https://www.meetup.com/en-AU/Stan-User-Group-Berlin/">Meetup page</a>.</p>
+      </header>
+      <section>
+        <h1>Past meetups</h1>
+
+        <h2>Bayesian Survival Models </h2>
+        <ul>
+            <li><b>Speaker:</b> <a href="https://twitter.com/ermeel_">Eren M. El&ccedil;i</a></li>
+            <li><b>Date:</b> 2018-11-05</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+Survival models are ubiquitous in biological, pharmaceutical and engineering settings, and are used to model characteristics of the time to an event of interest (e.g. disease or machine failure). In this talk I will demonstrate how to implement survival models in a Bayesian setting using Stan. We will put special focus on appropriate prior choices and different approaches to model the potentially time-dependent baseline hazard. The use of an accuracy score that is applicable for (right) censored data will help to scrutinise and compare the models at hand. Lastly, I demonstrate a necessary adjustment to the general posterior predictive check methodology in the presence of (right) censored times or a finite observation (study) length.
+                </p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="https://ermeel86.github.io/case_studies/surv_stan_example_20181028.html">Case Study: A Survival Model in Stan</a></li>
+                    <li><a href="https://ermeel86.github.io/case_studies/parametric_surv_models_20181111.html">Parametric Survival Models in Stan</a></li>
+                </ul>
+        </ul>
+
+        <h2>Towards a Principled Bayesian Workflow</h2>
+        <ul>
+            <li><b>Speaker:</b> <a href="https://betanalpha.github.io">Michael Betancourt</a></li>
+            <li><b>Date:</b> 2018-09-18</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+Given a probabilistic model, Bayesian inference is straightforward; building a satisfactory model in a given application, however, is a far more open-ended challenge. In order to ensure robust analyses we need a principled workflow that guides the development of a probabilistic model that is consistent with both our domain expertise and any observed data while also being amenable to accurate computation. In this talk I will discuss recent work that advances a principled workflow for building and evaluating probabilistic models in Bayesian inference.
+                </p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="https://betanalpha.github.io/assets/case_studies/principled_bayesian_workflow.html">Towards A Principled Bayesian Workflow (RStan)</a></li>
+                    <li><a href="https://github.com/betanalpha/jupyter_case_studies/blob/master/principled_bayesian_workflow/principled_bayesian_workflow.ipynb">Towards A Principled Bayesian Workflow (PyStan)</a></li>
+                </ul>
+        </ul>
+
+        <h2>Predator-Prey Population Dynamics: the Lotka-Volterra model in Stan</h2>
+        <ul>
+            <li><b>Speaker:</b> <a href="https://bob-carpenter.github.io">Bob Carpenter</a></li>
+            <li><b>Date:</b> 2018-09-03</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+Lotka (1925) and Volterra (1926) formulated parametric differential equations that characterize the oscillating populations of predators and prey. A statistical model to account for measurement error and unexplained variation uses the deterministic solutions to the Lotka-Volterra equations as expected population sizes.
+                </p>
+                <p>
+Stan is used to encode the statistical model and perform full Bayesian inference to solve the inverse problem of inferring parameters from noisy data. The model is fit to Canadian lynx and snowshoe hare populations, based on the number of pelts collected annually by the Hudson’s Bay Company. Posterior predictive checks for replicated data show the model fits this data well. Full Bayesian inference may be used to estimate future (or past) populations.
+                </p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="http://mc-stan.org/users/documentation/case-studies/lotka-volterra-predator-prey.html">Case Study: Predator-Prey Population Dynamics: 
+the Lotka-Volterra model in Stan</a></li>
+                </ul>
+        </ul>
+
+        <h2>The Intrinsic Conditional Autoregressive (ICAR) Model in Stan</h2>
+        <ul>
+            <li><b>Speaker:</b>Mitzi Morris</li>
+            <li><b>Date:</b> 2018-09-03</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+                Areal data consists of a finite set of regions with well-defined boundaries, each of which has a single measurement aggregated from its population. Counts of rare
+                events in small-population regions are noisy; conditional autoregressive (CAR) models (Besag 1974) smooth noisy estimates by pooling information from neighboring
+                regions. However, computing the log probability density of a CAR model is computationally expensive for an MCMC sampler. Intrinsic conditional autoregressive (ICAR)
+                models reduce the number of operations needed to compute the log density from cubic (N^3) to quadratic (N^2), making it possible to fit datasets for large areal
+                maps with an MCMC sampler running on a modern laptop computer in only a few hours, instead of many days.</p>
+                <p>
+In this talk we focus on the implementation of the ICAR model in Stan and fit this model to a dataset consisting of 2095 areal regions taken from the New York City 2010 census bureau map. This work is part of an ongoing joint work, using Stan to implement the Besag-York-Mollié Model (Besag et al. 1991), in order to analyze motor vehicle crashes injuring school-age pedestrians in New York City from 2005-2014 localized to census tracts.
+                </p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="http://mc-stan.org/users/documentation/case-studies/icar_stan.html">Case Study: Spatial Models in Stan: Intrinsic Auto-Regressive Models for Areal Data</a></li>
+                </ul>
+        </ul>
+
+        <h2>The Stan Core Roadmap</h2>
+        <ul>
+            <li><b>Speaker:</b> <a href="https://bob-carpenter.github.io">Bob Carpenter</a></li>
+            <li><b>Date:</b> 2018-09-03</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+The core of Stan includes the math library of differentiable probability and matrix functions, the programming language parser and C++ code generator, the inference algorithms, and the service functions used by interfaces to run algorithms over models.
+                </p>
+                <p>
+Most recently, Stan has added multi-core parallelism, which allows map-reduce functionality with multiple threads or multiple cores in a cluster. Near term features for the math library include GPU speedups for core matrix operations, optimized GLM modules, optimized adjoint-Jacobian formulations of partials, differential algebraic equation, definite integral, and partial differential equation solvers. We are also working on factoring the model concept to enable faster compiler times. In the medium term, we'll be switching to standards-based protocol buffer (and JSON) I/O, switching to logger-like functionality, and will work on faster compile times.
+                </p>
+
+                <p>
+Short term for the language we will be adding tuple types, ragged array types, and general lambdas with closures. Longer term, we will be moving to a blockless Stan language with a module structure that allows introduction of data and/or parameters and much more compact programs.
+</p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="https://ermeel86.github.io/meetups/stan/pdfs/Stanforpmx2018_BobCarpenter.pdf">The Stan Core Roadmap</a></li>
+                </ul>
+        </ul>
+
+        <h2>Models of retrieval in sentence comprehension</h2>
+        <ul>
+            <li><b>Speaker:</b> <a href="http://www.ling.uni-potsdam.de/~nicenboim/">Bruno Nicenboim</a></li>
+            <li><b>Date:</b> 2018-06-25</li>
+            <li><b>Abstract:</b>
+            <blockquote>
+                <p>
+[...]an application of the lognormal race model and a mixture model to psycholinguistic data. [...] focus on the Stan implementation, the challenges of the modeling, and model comparison: psis-loo and k-fold for these models.
+                </p>
+            </blockquote>
+            <li><b>Resources:</b>
+                <ul>
+                    <li><a href="http://mc-stan.org/events/stancon2017-notebooks/stancon2017-nicenboim-vasishth-retrieval-models.html">Case Study: Models of retrieval in sentence comprehension</a></li>
+                    <li><a href="https://www.youtube.com/watch?v=DJ0c7Bm5Djk&feature=youtu.be&t=6h18m1s">YouTube: Models of retrieval in sentence comprehension</a></li>
+                </ul>
+        </ul>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
